@@ -24,4 +24,4 @@ export PATH=$PATH:/Applications/MAMP/Library/bin
 
 First run `npm-install` to download the dependencies. Then you will need to open up the gruntfile and fill out the variables as required. Please note that we use a custom directory structure placing wp-content outside the wordpress directory. We do this internally in order to completely seperate our code from Wordpress.
 
-Once the Grunfile has all the correct information open a terminal window, `cd` into your project directory and run grunt setup.
+Once the Grunfile has all the correct information open a terminal window, `cd` into your project directory and run `grunt setup`.
