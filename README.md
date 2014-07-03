@@ -17,7 +17,7 @@ MAMP users need to add **PHP** and **MYSQL** to their .bash_profile. It should l
 
 ```js
 export PATH="$PATH: /Applications/MAMP/bin/php/php5.5.10/bin"
-export PATH=$PATH:/Applications/MAMP/Library/bin
+export PATH=$PATH: /Applications/MAMP/Library/bin
 ```
 
 ### Setup
