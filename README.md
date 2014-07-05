@@ -16,8 +16,8 @@ In order to use the Wordpress Comand Line Interface you must first update your *
 MAMP users need to add **PHP** and **MYSQL** to their .bash_profile. It should look something like this:
 
 ```bash
-export PATH=$PATH:/Applications/MAMP/bin/php/php5.5.10/bin
-export PATH=$PATH:/Applications/MAMP/Library/bin
+export PATH=/Applications/MAMP/bin/php/php5.5.3/bin:$PATH
+export PATH=/Applications/MAMP/Library/bin:$PATH
 ```
 
 ### Setup
