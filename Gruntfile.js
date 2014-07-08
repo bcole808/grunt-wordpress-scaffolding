@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     var wp_db_pass  = 'pass';
     var wp_version  = '3.9.1';
 
-    // Project configuration.
+   // Project configuration.
 
     require('time-grunt')(grunt);
 
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                     // Move wp-config to parent dir
                     'mv wordpress/wp-config.php wp-config.php',
                     // Create Database tables
-                    "wp core install --url="+ wp_url +" --title="+ wp_title +" --admin_user="+ wp_user +" --admin_password="+ wp_pass +" --admin_email="+ wp_email,
+                    'wp core install --url='+ wp_url +' --title='+ wp_title +' --admin_user='+ wp_user +' --admin_password='+ wp_pass +' --admin_email='+ wp_email,
                     // Add custom dir structure
                     'wp option update home ' + wp_url,
                     'wp option update siteurl ' + wp_url + '/wordpress'
@@ -64,6 +64,19 @@ module.exports = function(grunt) {
                    // Activate theme
                    'wp theme activate Flexbones-master'
                 ].join('&&')
+            },
+            // DEBUG ONLY, avoid using if possible
+            wpreset: {
+                command: [
+                    //rm wordpress
+                    'rm -rf wordpress',
+                    //rm wp-config
+                    'rm wp-config.php',
+                    //rm wp-content
+                    'rm -rf wp-content',
+                    //delete db
+                    'mysqladmin -h '+ wp_db_host +' -u '+ wp_db_user +' -p'+ wp_db_pass +' drop '+ wp_db_name
+                ].join('&&')
             }
         }
     });
@@ -74,4 +87,4 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask('setup', ['shell:wpinstall','shell:wpcreatedirs','shell:wpdatabasecreate','shell:wpconfig','shell:wpthemes']);
-};
+    grunt.registerTask('undo', ['shell:wpreset']);
