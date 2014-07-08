@@ -88,3 +88,4 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('setup', ['shell:wpinstall','shell:wpcreatedirs','shell:wpdatabasecreate','shell:wpconfig','shell:wpthemes']);
     grunt.registerTask('undo', ['shell:wpreset']);
+};
