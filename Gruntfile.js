@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     var wp_db_pass  = 'pass';
     var wp_version  = '3.9.1';
 
-   // Project configuration.
+ // Project configuration.
 
     require('time-grunt')(grunt);
 
@@ -46,11 +46,11 @@ module.exports = function(grunt) {
             wpconfig: {
                 command: [
                     // Set up wp-config
-                    "wp core config --dbname="+ wp_db_name +" --dbuser="+ wp_db_user +" --dbpass="+ wp_db_pass +" --dbhost="+ wp_db_host +" --extra-php='define(\"WP_DEBUG\",true);\ndefine(\"WP_CONTENT_DIR\", dirname(__FILE__). \"/wp-content\" );\ndefine(\"WP_CONTENT_URL\",\"http://\". $_SERVER[\"HTTP_HOST\"]. \"/scaffolding/wp-content\");'",
+                    "wp core config --dbname="+ wp_db_name +" --dbuser="+ wp_db_user +" --dbpass="+ wp_db_pass +" --dbhost="+ wp_db_host +" --extra-php='define(\"WP_DEBUG\",true);\ndefine(\"WP_CONTENT_DIR\", dirname(__FILE__). \"/wp-content\" );\ndefine(\"WP_CONTENT_URL\",\"http://\". $_SERVER[\"HTTP_HOST\"]. \"/"+ wp_folder +"/wp-content\");'",
                     // Move wp-config to parent dir
                     'mv wordpress/wp-config.php wp-config.php',
                     // Create Database tables
-                    'wp core install --url='+ wp_url +' --title='+ wp_title +' --admin_user='+ wp_user +' --admin_password='+ wp_pass +' --admin_email='+ wp_email,
+                    'wp core install --url='+ wp_url +' --title="'+ wp_title +'" --admin_user='+ wp_user +' --admin_password='+ wp_pass +' --admin_email='+ wp_email,
                     // Add custom dir structure
                     'wp option update home ' + wp_url,
                     'wp option update siteurl ' + wp_url + '/wordpress'
@@ -77,6 +77,9 @@ module.exports = function(grunt) {
                     //delete db
                     'mysqladmin -h '+ wp_db_host +' -u '+ wp_db_user +' -p'+ wp_db_pass +' drop '+ wp_db_name
                 ].join('&&')
+            },
+            openinbrowser: {
+                command: 'open ' + wp_url
             }
         }
     });
@@ -86,6 +89,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
-    grunt.registerTask('setup', ['shell:wpinstall','shell:wpcreatedirs','shell:wpdatabasecreate','shell:wpconfig','shell:wpthemes']);
+    grunt.registerTask('setup', ['shell:wpinstall','shell:wpcreatedirs','shell:wpdatabasecreate','shell:wpconfig','shell:wpthemes','shell:openinbrowser']);
     grunt.registerTask('undo', ['shell:wpreset']);
 };
