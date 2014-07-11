@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             wpthemes: {
                 command: [
                     // Install theme
-                   'wp theme install https://github.com/roikles/Flexbones/archive/master.zip',
+                   'wp theme install ' + wp_theme,
                    // Activate theme
                    'wp theme activate Flexbones-master'
                 ].join('&&')
