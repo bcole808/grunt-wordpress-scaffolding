@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     // Wordpress details
-    var wp_theme    = 'https://github.com/user/theme.git';
+    var wp_theme    = 'https://github.com/user/repository/archive/master.zip';
     var wp_user     = 'user';
     var wp_pass     = 'pass';
     var wp_folder   = 'project-folder';
