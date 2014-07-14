@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             wpconfig: {
                 command: [
                     // Set up wp-config
-                    "wp core config --dbname="+ wp_db_name +" wp_--dbuser="+ wp_db_user +" --dbpass="+ wp_db_pass +" --dbhost="+ wp_db_host +" --extra-php='define(\"WP_DEBUG\",true);\ndefine(\"WP_CONTENT_DIR\", dirname(__FILE__). \"/wp-content\" );\ndefine(\"WP_CONTENT_URL\",\"http://\". $_SERVER[\"HTTP_HOST\"]. \"/"+ wp_folder +"/wp-content\");'",
+                    "wp core config --dbname="+ wp_db_name +" --dbuser="+ wp_db_user +" --dbpass="+ wp_db_pass +" --dbhost="+ wp_db_host +" --extra-php='define(\"WP_DEBUG\",true);\ndefine(\"WP_CONTENT_DIR\", dirname(__FILE__). \"/wp-content\" );\ndefine(\"WP_CONTENT_URL\",\"http://\". $_SERVER[\"HTTP_HOST\"]. \"/"+ wp_folder +"/wp-content\");'",
                     // Move wp-config to parent dir
                     'mv wordpress/wp-config.php wp-config.php',
                     // Create Database tables
