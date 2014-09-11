@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     var wp_db_host  = 'localhost';
     var wp_db_user  = 'user';
     var wp_db_pass  = 'pass';
-    var wp_version  = '3.9.1';
+    var wp_version  = '4.0';
 
  // Project configuration.
 
