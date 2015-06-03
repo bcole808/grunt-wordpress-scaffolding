@@ -70,11 +70,11 @@ module.exports = function(grunt) {
             wpreset: {
                 command: [
                     //rm wordpress
-                    'rm -rf wordpress',
+                    'rm -rf wordpress || true',
                     //rm wp-config
-                    'rm wp-config.php',
+                    'rm wp-config.php || true',
                     //rm wp-content
-                    'rm -rf wp-content',
+                    'rm -rf wp-content || true',
                     //delete db
                     'mysqladmin -h '+ wp_db_host +' -u '+ wp_db_user +' -p'+ wp_db_pass +' drop '+ wp_db_name
                 ].join('&&')
