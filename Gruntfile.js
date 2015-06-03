@@ -51,19 +51,19 @@ module.exports = function(grunt) {
                     // Move wp-config to parent dir
                     'mv wordpress/wp-config.php wp-config.php',
                     // Create Database tables
-                    'wp core install --url='+ wp_url +' --title="'+ wp_title +'" --admin_user='+ wp_user +' --admin_password='+ wp_pass +' --admin_email='+ wp_email,
+                    'wp core install --path=wordpress --url='+ wp_url +' --title="'+ wp_title +'" --admin_user='+ wp_user +' --admin_password='+ wp_pass +' --admin_email='+ wp_email,
                     // Add custom dir structure
-                    'wp option update home ' + wp_url,
-                    'wp option update siteurl ' + wp_url + '/wordpress'
+                    'wp option update home ' + wp_url + ' --path=wordpress',
+                    'wp option update siteurl ' + wp_url + '/wordpress --path=wordpress'
                 ].join('&&')
             },
             //install and activate a theme
             wpthemes: {
                 command: [
                     // Install theme
-                   'wp theme install ' + wp_theme,
+                   'wp theme install ' + wp_theme + ' --path=wordpress',
                    // Activate theme
-                   'wp theme activate Flexbones-master'
+                   'wp theme activate Flexbones-master --path=wordpress'
                 ].join('&&')
             },
             // DEBUG ONLY, avoid using if possible
